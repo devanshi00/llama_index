@@ -184,7 +184,7 @@ class LlamaCPP(CustomLLM):
             with requests.get(model_url, stream=True) as r:
                 with open(model_path, "wb") as file:
                     total_size = int(r.headers.get("Content-Length") or "0")
-                    if total_size < 1000 * 1000:
+                    if total_size < 100 * 1024:
                         raise ValueError(
                             "Content should be at least 1 MB, but is only",
                             r.headers.get("Content-Length"),
